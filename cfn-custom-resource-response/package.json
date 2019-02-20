@@ -1,0 +1,29 @@
+{
+    "name": "cfn-custom-resource-response",
+    "version": "1.0.0",
+    "description": "This is a NPM-hosted of AWS cfn-response for Custom Resources.",
+    "main": "index.js",
+    "author": "Amazon Web Services, Inc. or its affiliates",
+    "license": "A copy of the License is located at http://aws.amazon.com/agreement/",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/francismeynard/aws-journey.git"
+    },
+    "homepage": "https://github.com/francismeynard/aws-journey/tree/master/cfn-custom-resource-response#readme",
+    "keywords": [
+        "aws",
+        "cloudFormation",
+        "cloud",
+        "formation",
+        "lambda",
+        "function",
+        "cfn-response",
+        "response",
+        "customResource",
+        "custom",
+        "resource"
+    ]
+}
