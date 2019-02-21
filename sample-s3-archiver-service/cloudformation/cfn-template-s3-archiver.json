@@ -1,0 +1,71 @@
+{
+    "Description": "This template creates resources for s3-archiver-service demo App",
+    "AWSTemplateFormatVersion": "2010-09-09",
+
+    "Parameters": {
+        "S3BucketName": {
+            "Type": "String",
+            "Description": "The name of the S3 bucket where the lambda-s3-archiver.zip file is stored."
+        },
+        "LambdaS3ArchiverZipLocation": {
+            "Type": "String",
+            "Description": "The location of the lambda-s3-archiver.zip file within the S3 bucket.",
+            "Default": "lambda-s3-archiver.zip"
+        }
+    },
+
+    "Resources": {
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName": { "Fn::Join": ["", [{ "Ref": "AWS::StackName" }, "-lambda-execution-role"]] },
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [{ "Effect": "Allow", "Principal": { "Service": "lambda.amazonaws.com" }, "Action": ["sts:AssumeRole"] }]
+                },
+                "Path": "/service-role/",
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+                    "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+                    "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+                    "arn:aws:iam::aws:policy/AmazonSNSFullAccess"
+                ]
+            }
+        },
+
+        "LambdaS3ArchiverService": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "FunctionName": { "Fn::Join": ["", [{ "Ref": "AWS::StackName" }, "-lambda-s3-archiver-service"]] },
+                "Description": "This lambda function handles the archiving of files in S3.",
+                "Runtime": "nodejs8.10",
+                "Handler": "index.handler",
+                "Role": { "Fn::GetAtt": ["LambdaExecutionRole", "Arn"] },
+                "Code": {
+                    "S3Bucket": { "Ref": "S3BucketName" },
+                    "S3Key": { "Ref": "LambdaS3ArchiverZipLocation" }
+                },
+                "Timeout": 10
+            }
+        },
+
+        "LambdaPermissionInvokeS3ArchiverService": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "Action": "lambda:InvokeFunction",
+                "FunctionName": { "Ref": "LambdaS3ArchiverService" },
+                "Principal": "sns.amazonaws.com",
+                "SourceArn": { "Ref": "SNSTopicForLambdaS3ArchiverService" }
+            }
+        },
+
+        "SNSTopicForLambdaS3ArchiverService": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "Subscription": [{ "Endpoint": { "Fn::GetAtt": ["LambdaS3ArchiverService", "Arn"] }, "Protocol": "lambda" }],
+                "TopicName": { "Fn::Join": ["", [{ "Ref": "AWS::StackName" }, "-s3-archiver-service-topic"]] }
+            }
+        }
+    }
+
+}

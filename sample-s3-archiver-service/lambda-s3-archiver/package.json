@@ -1,5 +1,5 @@
 {
-    "name": "s3-archiver-service-lambda",
+    "name": "lambda-s3-archiver",
     "version": "1.0.0",
     "description": "This lambda function handles the archiving of files in S3.",
     "main": "index.js",
@@ -9,14 +9,9 @@
         "node": "8.10"
     },
     "scripts": {
-        "test": "./node_modules/.bin/mocha --recursive --reporter spec"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
         "lambda-s3-archiver": "^1.0.0"
-    },
-    "devDependencies": {
-        "chai": "^3.5.0",
-        "mocha": "^5.2.0",
-        "sinon": "^6.3.1"
     }
 }
