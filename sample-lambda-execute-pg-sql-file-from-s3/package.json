@@ -1,0 +1,17 @@
+{
+    "name": "sample-lambda-execute-pg-sql-file-from-s3",
+    "version": "1.0.0",
+    "description": "This lambda function will read and execute the postgres SQL file form S3",
+    "main": "index.js",
+    "author": "francismeynard",
+    "license": "ISC",
+    "engines": {
+        "node": "8.10"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "pg": "^7.4.1"
+    }
+}

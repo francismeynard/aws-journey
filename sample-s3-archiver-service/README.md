@@ -29,7 +29,8 @@ Below are the steps to how to provision new stack and testing the sample App.
 #### Test sample App
 
 3. Go to SNS -> Topics and look for **"${stack-name}-archiver-s3-archiver-service-topic"**
-   - Test by publishing message to topic, sample message below -
+
+   - Test by publishing message to topic, sample message below. Then click on "Publish message".
 
 ```json
 Subject: Test
@@ -45,12 +46,10 @@ Message:
 }
 ````
 
-   - Then click on "Publish message"
-
 4. To verify, go to s3-bucket-name/s3-prefix-path and check the output archive file.
 
 ## What's next?
 
-With this demo App, you may now have an idea on how to integrate the S3 Archiver service in you existing application by through publishing message to SNS topic.
+With this demo App, you may now have an idea on how to integrate the S3 Archiver service in your new or existing application through publishing message to the SNS topic.
 
 Cheers and happy coding!
