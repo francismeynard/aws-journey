@@ -1,0 +1,17 @@
+{
+    "name": "test-function",
+    "version": "1.0.0",
+    "description": "This is a test lambda function that will be used to demo the aws-lambda-devops-scripts.",
+    "main": "index.js",
+    "author": "francismeynard",
+    "license": "ISC",
+    "scripts": {
+        "test": "./node_modules/.bin/mocha --recursive --reporter spec"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "mocha": "^2.5.3",
+        "sinon": "^6.3.1"
+    }
+}

@@ -46,10 +46,10 @@ Check this out! <https://www.npmjs.com/package/cfn-custom-resource-response>
 
 ## Miscellaneous
 
-### [aws-lambda-nodejs-unit-test](https://github.com/francismeynard/aws-journey/tree/master/aws-lambda-nodejs-unit-test)
+### [sample-lambda-devops-scripts](https://github.com/francismeynard/aws-journey/tree/master/sample-lambda-devops-scripts)
+
+This project contains sample scripts on how to run unit test, create lambda zip file, and deploy zip to AWS using AWS CLI.
+
+### [sample-lambda-nodejs-unit-test](https://github.com/francismeynard/aws-journey/tree/master/sample-lambda-nodejs-unit-test)
 
 This is a sample project on how to perform unit test for AWS lambda using nodejs.
-
-### [aws-lambda-devops-scripts](https://github.com/francismeynard/aws-journey/tree/master/aws-lambda-devops-scripts)
-
-This project contains sample scripts on how to package and deploy AWS Lambda using AWS CLI.
